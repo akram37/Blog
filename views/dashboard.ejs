@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="stylesheets/dashStyle.css" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item nav-profile border-bottom">
+              <div class="nav-profile-image">
+                <img src="/uploads/<%= profileImage %>" alt="User Profile Image">
+                <!--change to offline or busy as needed-->
+              </div>
+              <div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
+                <span class="font-weight-semibold mb-1 mt-2 text-center"><%=username%></span>
+              </div>
+              <form action="/logout" method="post">
+                  <button id="logoutBtn" type="submit">Logout</button>
+              </form>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <div id="flexdiv">
+                <h4 class="card-title">My Blogs</h4>
+                <form action="#" method="get">
+                  <button>+</button>
+                </form>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Posting Date</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Blog title</td>
+                      <td>Blog Desc</td>
+                      <td>Blog Posting Date</td>
+                      <td><a href="#"><img src="/images/stylo.png" alt="" srcset=""></a></td>
+                      <td><a href="#"><img src="/images/supprimer.png" alt="" srcset=""></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+      </div>
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+
+    <!-- <script>
+        window.location.href = '/dashboard'
+    </script> -->
+  </body>
+</html>

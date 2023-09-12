@@ -1,0 +1,45 @@
+{
+  "users": [
+    {
+      "username": "akram",
+      "password": "$2b$10$b5VI5yJhBLog324CYkEGGe3f7Z2D2QTzJDShf1iYTy.XAnrGkV96K",
+      "profileImage": "1694513023880-IMG_20190704_111544.jpg",
+      "id": 1
+    },
+    {
+      "username": "younes",
+      "password": "$2b$10$O14m8GflNI5VMQjdm5uR..bFfCe3/mqA9odm5kMmsnMtZympm5d4m",
+      "profileImage": "1694518666997-IMG-20210909-WA0004.jpg",
+      "id": 2
+    },
+    {
+      "username": "samia",
+      "password": "$2b$10$O.8G3h8yZl30GPlESYwZm.TeuaK6g.94gQTUce349/F1bW50lB7t2",
+      "profileImage": "1694520483434-1185234_235985379883411_657136032_n.jpg",
+      "id": 3
+    }
+  ],
+  "blogs": [
+    {
+      "title": "blog 1",
+      "description": "desc of blog 1",
+      "text": "text of blog 1",
+      "blogImage": "1694518666997-IMG-20210909-WA0004.jpg",
+      "authorId": "1"
+    },
+    {
+      "title": "blog 2",
+      "description": "desc of blog 2",
+      "text": "text of blog 2",
+      "blogImage": "1694518666997-IMG-20210909-WA0004.jpg",
+      "authorId": "2"
+    },
+    {
+      "title": "blog 3",
+      "description": "desc of blog 3",
+      "text": "text of blog 3",
+      "blogImage": "1694518666997-IMG-20210909-WA0004.jpg",
+      "authorId": "1"
+    }
+  ]
+}
