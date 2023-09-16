@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/allBlogsStyle.css" />
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <% if (isAuthorPosts) { %>
+                <h1 class="title"><%=authorName%> Posted Blogs</h1>
+                <%}else{%>
+                    <% if (blogs.length > 0) { %>
+                        <h1 class="title">ALL Posted Blogs</h1>
+                        <%}else{%>
+                          <h1 class="title">No Posted Blogs</h1>
+                       <%}%>
+               <%}%>
+          <div class="inner-wrapper">
+            <% if (blogs.length > 0) { %>
+                <%blogs.forEach((b)=>{%>
+                    <div class="card">
+                        <div class="inner-card">
+                          <div class="img-wrapper">
+                            <img src="/uploads/blogs/<%= b.blogImage %>" alt="">
+                          </div>
+                          <div class="content">
+                            <h1><%=b.title%></h1>
+                            <p><%=b.description%></p>
+                          </div>
+                          <div class="btn-wrapper">
+                            <form action="/blogs/blog/<%=b.id%>" method="get">
+                                <button type="submit" class="view-btn">Read More</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    <%})%>
+                  <% } %>
+          </div>
+        </div>
+      </div>
+    
+      <div class="light-box">
+        <div class="box-wrapper">
+          <div class="box">
+            <span class="close-btn">&times</span>
+            <img src="" alt="" class="light-img">
+          </div>
+        </div>
+      </div>
+</body>
+</html>

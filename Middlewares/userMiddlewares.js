@@ -26,7 +26,7 @@ exports.loginUserHandler = (req, res, next) => {
               const passwordMatch = await bcrypt.compare(password, user.password);
               if (passwordMatch) {
                 const token = jwt.sign(
-                  {userid:username.id, username: user.username, profileImage: user.profileImage },
+                  {id:user.id, username: user.username, profileImage: user.profileImage },
                   secretKey,
                   { expiresIn: '1h' }
                 );

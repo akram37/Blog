@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="mb-4">
+        <h2 class="pt-2 tm-color-primary tm-post-title"><%=blog.title%></h2>
+        <p class="tm-mb-40"><%=blog.postingDate%> posted by <a href="/blogs/<%=blog.authorId%>"><%=authorName%></a></p>
+        <p><%=blog.description%></p>
+        <p><%=blog.text%></p>
+    </div>
+</body>
+</html>

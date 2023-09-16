@@ -7,16 +7,12 @@ const api = axios.create({
     }
 });
 
-exports.addBlog = (blog) => api.post('/',blog)
+exports.addBlog = blog => api.post('/',blog)
 
 exports.getAllBlogs = () => api.get('/')
 
-// const blog={
-//     title: "blog 4",
-//     description: "desc of blog 4",
-//     text: "text of blog 4",
-//     blogImage: "1694518666997-IMG-20210909-WA0004.jpg",
-//     authorId: "2"
-// }
+exports.getBlog = id => api.get(`/${id}`);
 
-// this.addBlog(blog)
+exports.editBlog = (id,blog) => api.patch(`/${id}`,blog)
+
+exports.deleteBlog = id => api.delete(`/${id}`)

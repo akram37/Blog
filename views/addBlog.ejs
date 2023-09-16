@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Blog</title> 
-    <link rel="stylesheet" href="stylesheets/style.css">
+    <title>Edit Blog</title> 
+    <link rel="stylesheet" href="/stylesheets/style.css">
    </head>
 <body>
   <div class="wrapper">
-    <h2>Registration</h2>
+    <h2>Blog Edit</h2>
     <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
       <div class="alert alert-danger">
         <ul>
@@ -18,15 +18,16 @@
         </ul>
       </div>
     <% } %>
-    <form action="/addBlog" method="post" enctype="multipart/form-data">
+    <form action="/blogs/addblog" method="post" enctype="multipart/form-data">
       <div class="input-box">
-        <input type="text" placeholder="Enter Title" name="username" required>
+        <input type="text" placeholder="Enter Title" name="title" required>
       </div>
       <div class="input-box">
-        <input type="password" placeholder="Enter Description" name="password" required>
+        <input type="text" placeholder="Enter Description" name="description" required>
       </div>
       <div class="input-box">
-        <input type="password" placeholder="Enter Text" name="confirmpassword" required>
+        <!-- <input type="text" placeholder="Enter Text" name="text" required> -->
+        <textarea name="text" id="" cols="30" rows="30"></textarea>
       </div>
       <div class="input-box">
         <input type="file" name="blogImage" accept="image/png, image/jpg, image/jpeg" />

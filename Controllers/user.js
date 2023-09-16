@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
 const secretKey = 'Fino Alla Fine'; 
 const { addUser } = require('../Api/userApi');
+const {getNextId} = require('../Services/user')
 
 exports.createUser = async (req, res, next) => {
   const errors = validationResult(req);
@@ -16,8 +17,9 @@ exports.createUser = async (req, res, next) => {
       password: await bcrypt.hash(password, 10),
       profileImage: imagePath,
     };
-    addUser(newUser);
-    const token = jwt.sign({ username: newUser.username, profileImage: newUser.profileImage }, secretKey, { expiresIn: '1h' });
+    const newUserId=await addUser(newUser);
+    console.log("newUser id: "+newUserId)
+    const token = jwt.sign({id: newUserId, username: newUser.username, profileImage: newUser.profileImage }, secretKey, { expiresIn: '1h' });
     res.cookie('jwt', token);
     req.session.isAuth=true
     req.session.token=token

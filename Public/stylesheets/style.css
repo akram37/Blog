@@ -44,7 +44,7 @@ body{
   height: 52px;
   margin: 18px 0;
 }
-form .input-box input{
+form .input-box input,textarea{
   height: 100%;
   width: 100%;
   outline: none;

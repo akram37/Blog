@@ -7,7 +7,15 @@ const api = axios.create({
     }
 });
 
-exports.addUser = (user) => api.post('/',user)
+exports.addUser = async (user) => {
+    try {
+      const response = await api.post('/', user);
+      const newUser = response.data; 
+      return newUser.id
+    } catch (error) {
+      console.error("Error adding user:", error);
+    }
+  };
 
 exports.getUsers = () => api.get('/')
 

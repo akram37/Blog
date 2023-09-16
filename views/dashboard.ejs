@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="stylesheets/dashStyle.css" />
+    <link rel="stylesheet" href="/stylesheets/dashStyle.css" />
   </head>
   <body>
     <div class="container-scroller">
@@ -14,7 +14,7 @@
         <ul class="nav">
           <li class="nav-item nav-profile border-bottom">
               <div class="nav-profile-image">
-                <img src="/uploads/<%= profileImage %>" alt="User Profile Image">
+                <img src="/uploads/users/<%= profileImage %>" alt="User Profile Image">
                 <!--change to offline or busy as needed-->
               </div>
               <div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
@@ -33,40 +33,48 @@
             <div class="card-body">
               <div id="flexdiv">
                 <h4 class="card-title">My Blogs</h4>
-                <form action="#" method="get">
-                  <button>+</button>
+                <form action="/blogs/addBlog/" method="get">
+                  <button type="submit">Add Blog</button>
                 </form>
               </div>
-              <div class="table-responsive">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Title</th>
-                      <th>Description</th>
-                      <th>Posting Date</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Blog title</td>
-                      <td>Blog Desc</td>
-                      <td>Blog Posting Date</td>
-                      <td><a href="#"><img src="/images/stylo.png" alt="" srcset=""></a></td>
-                      <td><a href="#"><img src="/images/supprimer.png" alt="" srcset=""></a></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <% var length = blogs.length %>
+              <% if (length > 0) { %>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Posting Date</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <%blogs.forEach((b)=>{%>
+                      <tr class="<%=b.id%>">
+                        <td><%=b.title%></td>
+                        <td><%=b.description%></td>
+                        <td><%=b.postingDate%></td>
+                        <td><a href="/blogs/edit/<%=b.id%>"><img src="/images/stylo.png" alt="" srcset=""></a></td>
+                        <td><img id= "<%=b.id%>" class= "deleteIcon hover-pointer" src="/images/supprimer.png" alt="" srcset=""></td>
+                        <!-- <td><a href="/blogs/delete/<%=b.id%>"><img src="/images/supprimer.png" alt="" srcset=""></a></td> -->
+                      </tr>
+                      <%})%>
+                    </tbody>
+                  </table>
+                </div>
+              <% } 
+                 else{%>
+                    <div id="noposts">No Posted Blogs</div>
+                 <%}%>
             </div>
       </div>
       </div>
-      <!-- page-body-wrapper ends -->
     </div>
-
-    <!-- <script>
-        window.location.href = '/dashboard'
-    </script> -->
+    <script>
+      var length = '<%= length %>';
+    </script>
+    <script src="/dist/bundle.js"></script>
   </body>
 </html>

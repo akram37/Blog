@@ -5,23 +5,27 @@ const {body} = require('express-validator');
 const userRouter = express.Router();
 module.exports = userRouter;
 
-const imageStorage = multer.diskStorage({
+const userStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './Public/uploads/');
+    cb(null, './Public/uploads/users');
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + '-' + file.originalname);
   },
 });
 
-const imageUpload = multer({ storage: imageStorage });
+const imageUpload = multer({ storage: userStorage });
 
 
 const {getUser}=require('../Services/user')
 const {createUser}=require('../Controllers/user')
 const {verifyJwt,loginUserHandler}=require('../Middlewares/userMiddlewares')
 
-userRouter.get(['/','/login'],verifyJwt,(req,res,next)=>{
+userRouter.get('/',(req,res,next)=>{
+         res.redirect('/blogs');
+})
+
+userRouter.get('/login',verifyJwt,(req,res,next)=>{
   const user=req.user
        if(user){
          res.redirect('/dashboard');
@@ -37,6 +41,7 @@ userRouter.post('/login',loginUserHandler);
 
 userRouter.get('/register',verifyJwt,(req,res,next)=>{
   if(req.user){
+    console.log('userid:'+req.user.id)
     res.redirect('/dashboard');
   }
   else{
@@ -67,11 +72,15 @@ userRouter.post('/register',
   createUser
 )
 
+const {fetchUserBlogs}=require('../Controllers/blog');
 
-userRouter.get('/dashboard',verifyJwt,(req,res,next)=>{
+
+userRouter.get('/dashboard',verifyJwt,async(req,res,next)=>{
   const user=req.user
        if(user){
-         res.render('dashboard', { username: user.username,profileImage:user.profileImage });
+        console.log(user)
+        const blogs=await fetchUserBlogs(req.user.id)
+         res.render('dashboard', { username: user.username,profileImage:user.profileImage,blogs:blogs});
        }
        else{
         res.redirect('/login');

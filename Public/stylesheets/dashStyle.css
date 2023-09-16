@@ -11614,6 +11614,10 @@ code {
         align-items: center;
       }
 
+      .hover-pointer {
+        cursor: pointer;
+    }
+
 .btn-outline-twitter {
   border: 1px solid #2caae1;
   color: #2caae1; }
@@ -15169,3 +15173,21 @@ dl {
   flex-grow: 1; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+#noposts{
+  width: 25%;
+  margin: 70px auto;
+  font-weight: bolder;
+  font-size: 25px;
+}
+
+.deleteBtn{
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
